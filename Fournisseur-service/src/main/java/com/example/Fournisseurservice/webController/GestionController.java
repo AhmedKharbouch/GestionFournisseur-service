@@ -32,16 +32,20 @@ public class GestionController {
     public Fournisseur getFournisseurById(@PathVariable Long id){
         return fournisseurRepository.findFournisseurById(id);
     }
-    //add fournisseur
-    @PostMapping("/fournisseurs")
-    public Fournisseur addFournisseur(@RequestBody Fournisseur fournisseur) throws FournisseurExistException {
 
+    @GetMapping(path = "/searchFsr/{nom}")
+    public Collection<Fournisseur> searchCategory(@PathVariable("nom")String nom) {
+        return fournisseurRepository.findFournisseurByName("%"+nom+"%");
+
+    }
+    //add fournisseur
+    @PostMapping("/addfournisseurs")
+    public Fournisseur addFournisseur(@RequestBody Fournisseur fournisseur) throws FournisseurExistException {
         //verify if fournisseur exist and throw exception fournisseur exist
         if(fournisseurRepository.findFournisseurByNom(fournisseur.getNom())!=null){
             throw new FournisseurExistException("Fournisseur already exist");
         }
-
-
+        System.out.println(fournisseur.getTypeFournisseur().getNom());
         fournisseur.setCreatedAt(new Date());
         return fournisseurRepository.save(fournisseur);
     }

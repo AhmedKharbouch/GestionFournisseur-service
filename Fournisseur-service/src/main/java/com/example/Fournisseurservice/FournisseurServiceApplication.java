@@ -20,9 +20,9 @@ public class FournisseurServiceApplication {
 	@Bean
 	CommandLineRunner start(FournisseurRepository fournisseurRepository, TypeFsrRepository typeFsrRepository){
 		return args -> {
-			fournisseurRepository.save(new Fournisseur(null,"central laitier","0660345298","0660345298","centrale@live.fr","rue 22 hay L1","casablanca",new Date(),null));
-			fournisseurRepository.save(new Fournisseur(null,"iphone store","0660350298","0660345298","iphone@live.fr","rue 27 hay L7","rabat",new Date(),null));
-			fournisseurRepository.save(new Fournisseur(null,"huawei store","0660330298","0660345298","huawei@live.fr","rue 30 hay L10","marrakech",new Date(),null));
+			fournisseurRepository.save(new Fournisseur(null,"central laitier","0660345298","0660345298","centrale@live.fr","rue 22 hay L1","casablanca",new Date(),null,null));
+			fournisseurRepository.save(new Fournisseur(null,"iphone store","0660350298","0660345298","iphone@live.fr","rue 27 hay L7","rabat",new Date(),null,null));
+			fournisseurRepository.save(new Fournisseur(null,"huawei store","0660330298","0660345298","huawei@live.fr","rue 30 hay L10","marrakech",new Date(),null,null));
 
 			fournisseurRepository.findAll().forEach(c->{
 				System.out.println(c.toString());
